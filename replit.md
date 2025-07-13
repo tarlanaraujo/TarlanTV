@@ -26,11 +26,12 @@ The frontend uses Bootstrap 5 with a dark theme for responsive design:
 - **Client-side Features**: JavaScript for form validation, auto-refresh, and interactive elements
 
 ### Data Storage
-Uses SQLAlchemy ORM with support for multiple database backends:
+Uses SQLAlchemy ORM with PostgreSQL database:
 
-- **Development**: SQLite database (`sqlite:///iptv_manager.db`)
-- **Production**: Configurable via `DATABASE_URL` environment variable
+- **Database**: PostgreSQL database with automatic table creation
+- **Connection**: Configured via `DATABASE_URL` environment variable
 - **Connection Management**: Pool recycling and pre-ping for connection reliability
+- **Tables**: search_history, channel, playlist_export with proper foreign key relationships
 
 ## Key Components
 

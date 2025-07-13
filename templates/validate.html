@@ -174,7 +174,7 @@
 </div>
 
 <script>
-const searchId = {{ search_entry.id }};
+var searchId = {{ search_entry.id }};
 
 function refreshStatus() {
     fetch(`/api/search_status/${searchId}`)

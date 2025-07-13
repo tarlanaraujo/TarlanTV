@@ -1,0 +1,234 @@
+/* Custom styles for IPTV Manager */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+/* Body and layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+/* Custom navbar */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Card enhancements */
+.card {
+    border: none;
+    border-radius: 12px;
+    background: var(--bs-dark);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    background: var(--bs-dark);
+    border-bottom: 1px solid var(--bs-gray-700);
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Status badges */
+.badge {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+/* Channel cards */
+.channel-card {
+    border: 1px solid var(--bs-gray-700);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.channel-card:hover {
+    border-color: var(--bs-primary);
+    transform: translateY(-1px);
+}
+
+/* Working status indicators */
+.status-working {
+    color: var(--bs-success);
+}
+
+.status-not-working {
+    color: var(--bs-danger);
+}
+
+.status-testing {
+    color: var(--bs-warning);
+}
+
+/* Loading animations */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Form enhancements */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid var(--bs-gray-600);
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+.form-control:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Button enhancements */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+}
+
+.btn-success {
+    background: var(--success-gradient);
+    border: none;
+}
+
+/* Table enhancements */
+.table-hover tbody tr:hover {
+    background-color: var(--bs-gray-800);
+}
+
+/* Alert enhancements */
+.alert {
+    border-radius: 8px;
+    border: none;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn-group .btn {
+        border-radius: 8px !important;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bs-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-gray-600);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-gray-500);
+}
+
+/* Animation for processing state */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Channel grid improvements */
+.channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+/* Category collapse improvements */
+.collapse {
+    transition: height 0.3s ease;
+}
+
+/* Logo styling */
+.channel-logo {
+    max-width: 60px;
+    max-height: 40px;
+    border-radius: 4px;
+}
+
+/* Stats cards */
+.stats-card {
+    background: linear-gradient(135deg, var(--bs-dark) 0%, var(--bs-gray-800) 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.stats-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Progress bars */
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    background-color: var(--bs-gray-700);
+}
+
+.progress-bar {
+    border-radius: 4px;
+}
+
+/* Tooltip improvements */
+.tooltip {
+    font-size: 0.875rem;
+}
+
+/* Custom modal */
+.modal-content {
+    background-color: var(--bs-dark);
+    border: 1px solid var(--bs-gray-700);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--bs-gray-700);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--bs-gray-700);
+}

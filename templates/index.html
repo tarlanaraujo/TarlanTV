@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="text-center mb-5">
+            <h1 class="display-4">
+                <i class="fas fa-tv text-primary me-3"></i>
+                Gerenciador de Listas IPTV
+            </h1>
+            <p class="lead text-muted">
+                Busque, valide e organize suas listas IPTV com facilidade
+            </p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Buscar Listas</h5>
+                        <p class="card-text">Encontre listas IPTV na web ou valide URLs M3U</p>
+                        <a href="{{ url_for('search') }}" class="btn btn-primary">
+                            <i class="fas fa-search me-2"></i>Buscar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Validar Canais</h5>
+                        <p class="card-text">Teste a conectividade e valide canais automaticamente</p>
+                        <a href="{{ url_for('search') }}" class="btn btn-success">
+                            <i class="fas fa-play me-2"></i>Validar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-download fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Exportar Listas</h5>
+                        <p class="card-text">Exporte listas válidas em formato M3U</p>
+                        <a href="{{ url_for('history') }}" class="btn btn-info">
+                            <i class="fas fa-download me-2"></i>Exportar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if recent_searches %}
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-history me-2"></i>Buscas Recentes
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Lista</th>
+                                <th>Canais</th>
+                                <th>Válidos</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for search in recent_searches %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-list me-2"></i>
+                                        <div>
+                                            <strong>{{ search.title or 'Lista IPTV' }}</strong>
+                                            <br>
+                                            <small class="text-muted">{{ search.url[:50] }}...</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">{{ search.channels_found }}</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success">{{ search.valid_channels }}</span>
+                                </td>
+                                <td>
+                                    <small>{{ search.search_date.strftime('%d/%m/%Y %H:%M') }}</small>
+                                </td>
+                                <td>
+                                    {% if search.status == 'completed' %}
+                                        <span class="badge bg-success">Concluído</span>
+                                    {% elif search.status == 'processing' %}
+                                        <span class="badge bg-warning">Processando</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Erro</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('validate', search_id=search.id) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

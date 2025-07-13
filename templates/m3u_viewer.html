@@ -153,6 +153,9 @@
                             <button class="btn btn-outline-success" onclick="exportM3U()">
                                 <i class="fas fa-download me-2"></i>Exportar M3U
                             </button>
+                            <button class="btn btn-outline-info" onclick="downloadHTML()">
+                                <i class="fas fa-code me-2"></i>Baixar HTML
+                            </button>
                         </div>
                     </div>
                     
@@ -472,6 +475,12 @@
             a.download = 'filmes_' + new Date().toISOString().split('T')[0] + '.m3u';
             a.click();
             URL.revokeObjectURL(url);
+        }
+        
+        function downloadHTML() {
+            // Create URL with M3U content as parameter
+            const downloadUrl = '/download_html?content=' + encodeURIComponent(m3uContent);
+            window.location.href = downloadUrl;
         }
         
         function generateM3UContent() {
